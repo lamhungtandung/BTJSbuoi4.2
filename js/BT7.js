@@ -1,103 +1,127 @@
-document.getElementById('docso').onclick = function () {
+function docSo3ChuSo() {
     //input
     var so3Chuso = Number(document.getElementById('so3chu').value);
+    var hienThi = document.getElementById('txtResult3')
+
+    var number = xuLiSo(so3Chuso);
     //output
+
+    hienThi.innerHTML = number;
+}
+// xu li 
+function xuLiSo(input) {
+    var hangTram = Math.trunc(input / 100);
+    var hangchuc = Math.trunc((input % 100) / 10);
+    var donvi = input % 10;
     var ketQua = '';
-    //xu li
+    var docHangTram = '';
+    var docHangChuc = '';
+    var docHangDV = '';
 
-    var hangTram = Math.floor(so3Chuso / 100);
-    var hangchuc = Math.floor((so3Chuso % 100) / 10);
-    var donvi = so3Chuso % 10;
+    switch (hangTram) {
+        case 1:
+            docHangTram += 'Một trăm ';
+            break;
+        case 2:
+            docHangTram += 'Hai trăm ';
+            break;
+        case 3:
+            docHangTram += 'Ba trăm ';
+            break;
+        case 4:
+            docHangTram += 'Bốn trăm ';
+            break;
+        case 5:
+            docHangTram += 'Năm trăm ';
+            break;
+        case 6:
+            docHangTram += 'Sáu trăm ';
+            break;
+        case 7:
+            docHangTram += 'Bảy trăm ';
+            break;
+        case 8:
+            docHangTram += 'Tám trăm ';
+            break;
+        case 9:
+            docHangTram += 'Chín trăm ';
+            break;
 
-    if (donvi === 0 && so3Chuso < 10) {
-        a = 'Không'
-    } else if (donvi === 1 && hangchuc === 0 || donvi === 1 && so3Chuso < 20 || donvi === 1 && so3Chuso > 100) {
-        a = 'Một'
-    } else if (donvi === 1 && so3Chuso > 20) {
-        a = 'Mốt'
-    } else if (donvi === 2) {
-        a = 'Hai'
-    } else if (donvi === 3) {
-        a = 'Ba'
-    } else if (donvi === 4) {
-        a = 'Bốn'
-
-    } else if (donvi === 5) {
-        a = 'Năm'
-    } else if (donvi === 6) {
-        a = 'Sáu'
-    } else if (donvi === 7) {
-        a = 'Bảy'
-    } else if (unit === 8) {
-        a = 'Tám'
-    } else if (donvi === 9) {
-        a = 'Chín'
-    }
-    //Hàng chục
-    if (hangchuc === 0) {
-        b = 'Lẻ'
-    } else if (hangchuc === 1) {
-        b = 'Mười'
-    } else if (hangchuc === 2) {
-        b = 'Hai Mươi'
-    } else if (hangchuc === 3) {
-        b = 'Ba Mươi'
-    } else if (hangchuc === 4) {
-        b = 'Bốn Mươi'
-    } else if (hangchuc === 5) {
-        b = 'Năm Mươi'
-    } else if (hangchuc === 6) {
-        b = 'Sáu Mươi'
-    } else if (hangchuc === 7) {
-        b = 'Bảy Mươi'
-    } else if (hangchuc === 8) {
-        b = 'Tám Mươi'
-    } else if (hangchuc === 9) {
-        b = 'Chín Mươi'
+        default:
+            alert('Error!');
+            break;
     }
 
-    //Hàng Trăm
-    if (hangTram === 1) {
-        c = 'Một Trăm'
-    } else if (hangTram === 2) {
-        c = 'Hai Trăm'
-    } else if (hangTram === 3) {
-        c = 'Ba Trăm'
-    } else if (hangTram === 4) {
-        c = 'Bốn Trăm'
+    //hang chuc
+    switch (hangchuc) {
+        case 1:
+            docHangChuc += ' mười ';
+            break;
+        case 2:
+            docHangChuc += ' hai mươi ';
+            break;
+        case 3:
+            docHangChuc += ' ba mươi ';
+            break;
+        case 4:
+            docHangChuc += ' bốn mươi ';
+            break;
+        case 5:
+            docHangChuc += ' năm mươi ';
+            break;
+        case 6:
+            docHangChuc += ' sáu mươi ';
+            break;
+        case 7:
+            docHangChuc += ' bảy mươi ';
+            break;
+        case 8:
+            docHangChuc += ' tám mươi ';
+            break;
+        case 9:
+            docHangChuc += ' chín mươi ';
+            break;
 
-    } else if (hangTram === 5) {
-        c = 'Năm Trăm'
-    } else if (hangTram === 6) {
-        c = 'Sáu Trăm'
-    } else if (hangTram === 7) {
-        c = 'Bảy Trăm'
-    } else if (hangTram === 8) {
-        c = 'Tám Trăm'
-    } else if (hangTram === 9) {
-        c = 'Chín Trăm'
-    }
-    if (so3Chuso < 10) {
-        ketQua = a
-    } else if (so3Chuso === 10) {
-        ketQua = 'Mười'
-    } else if (so3Chuso < 100 && donvi === 0) {
-        ketQua = b
-    } else if (so3Chuso < 100) {
-        ketQua = b + '  ' + a;
-    } else if (so3Chuso === 100 && hangchuc === 0 && donvi === 0) {
-        ketQua = c
-    } else if (so3Chuso > 100 && hangchuc === 0 && donvi === 0) {
-        ketQua = c;
-    } else if (so3Chuso > 100 && donvi === 0) {
-
-        ketQua = c + '  ' + b;
-    } else if (so3Chuso > 100) {
-        if (hangchuc >= 2) {
-            a = 'Mốt'
-        }
-        ketQua = c + '  ' + b + '  ' + a;
+        default:
+            alert('Error!');
+            break;
     }
 
-    document.getElementById('txtResult3').innerHTML = 'Số ' + ketQua;
+    //hang don vi
+    switch (donvi) {
+        case 1:
+            docHangDV += ' một ';
+            break;
+        case 2:
+            docHangDV += ' hai ';
+            break;
+        case 3:
+            docHangDV += ' ba ';
+            break;
+        case 4:
+            docHangDV += ' bốn ';
+            break;
+        case 5:
+            docHangDV += ' năm ';
+            break;
+        case 6:
+            docHangDV += ' sáu ';
+            break;
+        case 7:
+            docHangDV += ' bảy  ';
+            break;
+        case 8:
+            docHangDV += ' tám ';
+            break;
+        case 9:
+            docHangDV += ' chín ';
+            break;
+
+        default:
+            alert('Error!');
+            break;
+    }
+
+    ketQua = docHangTram + docHangChuc + docHangDV;
+    return ketQua;
 }
